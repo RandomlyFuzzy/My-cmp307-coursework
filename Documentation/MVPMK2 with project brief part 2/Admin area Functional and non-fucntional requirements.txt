@@ -1,0 +1,13 @@
+Functional Requirments
+	the solution will have roles /w different privileges
+		the solution will enable the adding of more 
+			- Users
+			- Meeting rooms
+		the solution will enable the tracking specific users ad hoc meetings bookings
+			- Export as CSV
+			- last 6 months of employee meetings
+
+
+Non-functional requirments
+	the application must be able to run on Windows 10
+	the application must use a suitable colour pallet

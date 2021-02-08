@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeNameTwang.Views.BookingPage"
+             >
+    
+    <ContentPage.Content >
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".5*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" HorizontalOptions="End">
+                            <Label Text="Organiser:"  FontSize="Medium" HorizontalTextAlignment="End"></Label>
+                        <Label Text="Title:" FontSize="Title" HorizontalTextAlignment="End"></Label>
+                        <Label Text="Duration:" FontSize="Medium" HorizontalTextAlignment="End"></Label>
+                        <Label Text="Start Time:" FontSize="Medium" HorizontalTextAlignment="End"></Label>
+                        <Label Text="TimeLeft:" FontSize="Medium" HorizontalTextAlignment="End"></Label>
+                        </StackLayout>
+                        <StackLayout x:Name="BookingDetails" Grid.Column="1">
+                            <Label Text="{Binding Organiser}"  FontSize="Medium"></Label>
+                            <Label Text="{Binding title}" FontSize="Title"></Label>
+                            <Label Text="{Binding duration, StringFormat='{0:F1}'}" FontSize="Medium"></Label>
+                            <Label Text="{Binding start, StringFormat='{}{0:hh\\:mm}'}" FontSize="Medium"></Label>
+                            <Label Text="{Binding TimeLeft}" FontSize="Medium"></Label>
+                        </StackLayout>
+                    </Grid>
+
+                <ListView x:Name="ItemsListView"
+                    Grid.Row="1"
+                    ItemsSource="{Binding Items}"
+                    HasUnevenRows="true"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    IsPullToRefreshEnabled="true"
+                    VerticalOptions="EndAndExpand"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate VerticalOptions="FillAndExpand">
+                        <DataTemplate >
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding name}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="20" 
+                                            HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

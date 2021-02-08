@@ -1,0 +1,13 @@
+Room can have bookings
+Room can have a name
+Room need a capacity
+
+Employee have a name
+Employee can make bookings
+Employee can have multiple bookings
+Employee can be online
+
+Booking needs to have a Room
+Booking needs to have participants
+Booking have a Start
+Booking have a duration

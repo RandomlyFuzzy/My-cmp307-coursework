@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Booking">
+    <Position X="7.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAIAQABAAAgAAEAgACAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\scripts\DataStructures\Booking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room">
+    <Position X="9.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\scripts\DataStructures\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\scripts\DataStructures\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserBooking">
+    <Position X="7.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\scripts\DataStructures\UserBooking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonFunctions">
+    <Position X="17.25" Y="13" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="17" Y="8.191" />
+        <Point X="17" Y="12.11" />
+        <Point X="18" Y="12.11" />
+        <Point X="18" Y="13" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Misc\ButtonFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomEntryManager">
+    <Position X="19.5" Y="8" Width="2" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="17" Y="8.191" />
+        <Point X="17" Y="8.543" />
+        <Point X="20.5" Y="8.543" />
+        <Point X="20.5" Y="8" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABABAAAAACAAAAACAAABEAAAAAEAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\scripts\Rooms\RoomEntryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomForm">
+    <Position X="22" Y="7" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.75" Y="7.875" />
+        <Point X="18" Y="7.875" />
+        <Point X="18" Y="7.579" />
+        <Point X="22" Y="7.579" />
+        <Point X="22" Y="7.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACQAAAAAAAIAAgAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Rooms\RoomForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenerateUsers">
+    <Position X="13" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Users\GenerateUsers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserEntryManager">
+    <Position X="12.75" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAABAAgAAABAAgAAQEAEAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\scripts\Users\UserEntryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserForm">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true">
+      <Path>
+        <Point X="17" Y="7.5" />
+        <Point X="17" Y="7.165" />
+        <Point X="13.125" Y="7.165" />
+        <Point X="13.125" Y="7.573" />
+        <Point X="12.5" Y="7.573" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAACACAAAAAAABAgAAAAAQQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Users\UserForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JsonDecoder">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\WebRequest\JsonDecoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeRequest">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAABAAAAAAAAgCAEAAAAAAAIAAAAAAAg=</HashCode>
+      <FileName>Assets\scripts\WebRequest\MakeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AuthException">
+    <Position X="13.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\WebRequest\MakeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NotFoundException">
+    <Position X="13.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\WebRequest\MakeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InternalServerException">
+    <Position X="13.5" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="System.Exception" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="10.5" Y="3.875" />
+        <Point X="13.342" Y="3.875" />
+        <Point X="13.342" Y="5.866" />
+        <Point X="13.5" Y="5.866" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\WebRequest\MakeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParamArguments">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAQgAA=</HashCode>
+      <FileName>Assets\scripts\WebRequest\ParamArguments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequestFactory">
+    <Position X="15.5" Y="3" Width="2.75" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="17" Y="7.5" />
+        <Point X="17" Y="6.8" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAABBAAAAAAABACAEAAAAAAAIAAAAAAAg=</HashCode>
+      <FileName>Assets\scripts\WebRequest\RequestFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Autherization">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAACIACAAAAAAAAAgAAAAAAAAAkAAgAAAAAkA=</HashCode>
+      <FileName>Assets\scripts\Autherization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Token">
+    <Position X="22.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Autherization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="formController">
+    <Position X="15.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\formController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenerateRooms">
+    <Position X="19.5" Y="11.25" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="17" Y="8.191" />
+        <Point X="17" Y="12.103" />
+        <Point X="19.5" Y="12.103" />
+        <Point X="19.5" Y="12.125" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\scripts\Rooms\GenerateRooms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Exception" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

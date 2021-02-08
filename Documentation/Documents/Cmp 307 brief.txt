@@ -1,0 +1,36 @@
+CMP307 Software Engineering Practice
+Project Part 1
+Introduction
+    TayMark is a growth hacking marketing agency that helps new and established companies to achieve swift and sustainable growth.
+    It has a largeportfolio of clients and active projects.
+    TayMark employees come froma range of backgrounds including marketing, sales, design, project management, and web development.
+
+    It is common for TayMark project teams to have ad hoc meetings throughout the day, to discuss active projects.
+    These meetings often happen at short notice and are informally managed in messaging apps.
+    While there are a number of meetings rooms available it seems that different team meetings often happen at the same time, leading to lack of room space, rescheduling of the meeting, and a general waste of productivity.
+
+    TayMark requires you to design and develop a lightweight scheduling software system to help them manage ad hoc team meetings.
+    The software should be implemented to the specifications of the client, which are provided below.
+
+Client Requirements
+    TayMark (the client) requests that a software system is designed and developed to allow its employees to schedule ad hoc team meetings more efficiently.
+    Any employee should be able to book a meeting, which includes a room and participants.
+    Upon a successful booking the software should inform other participants of the meeting details.
+    TayMark top management is willing to mandate use of the software if deemed suitable.
+
+    Since meetings are ad hoc it should be possible to schedule a meeting for any time on that specific day, but not any further into the future.
+    The software should keep track of meeting rooms’ availability and usage, and prevent clashing bookings.
+    If no room is available a suitable message should be displayed and it would be nice if analternative time could be suggested.
+    It can be assumed that all meeting rooms have similar facilities, but capacity between rooms differ.
+    The software should make the room capacity clear and, due to safety regulations, must not allow overcrowding.
+
+    As the agency operates within a Microsoft environment, the software developed must run on our Microsoft Windows 10 computers.
+    We also have a central Microsoft (windows server 2019) server that may be used to host any parts of the software.
+    The software will only be used on our local office network.
+    As a marketing agency with tight project deadlines, we cannot afford delay or downtime in our systems.
+    As such, the software should be reliable, secure, and fit for purpose.
+
+    We would appreciate if the software could look professional, as we are a trending agency.
+    Employees use various software suites to manage information and communications, but ad hoc team meetings are usually scheduled on the fly using some type of messaging app.
+    We would like to keep this lightweight and easy to understand approach.
+    Most of our employees use messaging apps like “WhatsApp” and “Facebook Messenger”, so an interface that shares similarity with these apps would be welcomed.

@@ -1,0 +1,26 @@
+Functional requirements
+    1. All employee will be able to book a Meeting
+        1.1 Must feature a room
+        1.2 Must featuren participants
+    2. Must inform the other participants of the booking 
+        2.1 Must be secure
+            2.1.1 Must feature secure transmission of data (e2e encrytpion)
+    3. Must be the same day
+    4. Must Keep track of bookings
+        4.1 Must display appropriate message if no booking is avaliable
+    5. Rooms Must have different capacitys
+    6. Must be stable
+    7. Must use little system resources
+    8. Must run on Windows 10 
+    9. Must run on a local network
+
+
+Non-Functional requirements
+    1. should look professional
+    2. should be easy to understand flow
+    3. should look similar to whatsApp or Facebook messenger
+    4. should be readable to all users
+
+
+
+

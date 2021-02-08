@@ -1,0 +1,2 @@
+MainPackage=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\bin\x64\Release\Upload\CodeNameTwang.UWP_1.0.0.0_x64.appx
+SymbolPackage=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\bin\x64\Release\Upload\CodeNameTwang.UWP_1.0.0.0\CodeNameTwang.UWP_1.0.0.0_x64.appxsym

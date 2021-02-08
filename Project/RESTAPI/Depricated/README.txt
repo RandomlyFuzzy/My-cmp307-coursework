@@ -1,0 +1,1 @@
+The reason why docker has been depricated from this application is due to the fact that it changes the incoming ip address of the applications connecting which is needed for other parts of the application mainly keeping trasck of who is online and who is not.

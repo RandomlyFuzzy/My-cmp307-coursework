@@ -1,0 +1,4 @@
+MainPackage=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\bin\ARM\Debug\CodeNameTwang.UWP_1.0.2.0_ARM_Debug.appx
+SymbolPackage=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\obj\ARM\Debug\Symbols\CodeNameTwang.UWP_1.0.2.0_ARM_Debug.appxsym
+ResourcePack=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\bin\ARM\Debug\CodeNameTwang.UWP_1.0.2.0_scale-100.appx
+ResourcePack=C:\Users\liam-\Desktop\GitHub\coursework-RandomlyFuzzy\Project\CodeNameTwang\CodeNameTwang\CodeNameTwang.UWP\bin\ARM\Debug\CodeNameTwang.UWP_1.0.2.0_scale-400.appx

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeNameTwang.Views.AddBookingPage">
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid Padding="20" HeightRequest="120">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.23*"/>
+                        <ColumnDefinition Width="0.8*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="12"  Grid.Row="0" Padding="2">
+                        <Label Text="Title" FontSize="Medium"  HorizontalOptions="End"/>
+                        <Label Text="Time" FontSize="Medium" HorizontalOptions="End"/>
+                        <Label Text="room" FontSize="Medium" HorizontalTextAlignment="End"/>
+                        <Label Text="duration" FontSize="Medium" HorizontalTextAlignment="End"/>
+                    </StackLayout>
+                    <StackLayout x:Name="entries" Grid.Column="1"  Grid.Row="0" Padding="2">
+                        <Entry Text="{Binding title}" x:Name="title" FontSize="Small" HorizontalOptions="Fill"/>
+                        <TimePicker   Time="{Binding CurrentSpan }" x:Name="TimePick"  Unfocused="TimePicker_Unfocused" HorizontalOptions="Fill"/>
+                        <Picker Grid.Column="0" HorizontalOptions="FillAndExpand" x:Name="Rooms" SelectedIndexChanged="Rooms_SelectedIndexChanged" />
+                        <Picker x:Name="duration" SelectedIndexChanged="duration_SelectedIndexChanged" />
+                    </StackLayout>
+                </Grid>
+                <Label Grid.Row="1" x:Name="cap" Text="capcity" FontSize="Medium" HorizontalTextAlignment="End"/>
+                <ListView x:Name="ItemsListView"
+                    Grid.Row="2"
+                    ItemsSource="{Binding Items}"
+                    HasUnevenRows="true"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    IsPullToRefreshEnabled="true"
+                    VerticalOptions="EndAndExpand"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    ItemSelected="ItemsListView_ItemSelected">
+                    <ListView.ItemTemplate VerticalOptions="FillAndExpand">
+                        <DataTemplate >
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding name}" 
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="3" x:Name="Add" Text="AddPerson" Pressed="Button_Pressed_1"/>
+                <Button Grid.Row="4" HorizontalOptions="FillAndExpand" Text="Check Room Avalibility"  Pressed="Button_Pressed_2"></Button>
+                <Button Grid.Row="5" Text="Add Booking" Pressed="Button_Pressed"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

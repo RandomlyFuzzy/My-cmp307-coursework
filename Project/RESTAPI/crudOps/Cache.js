@@ -2,9 +2,6 @@ const sql = require('mssql');
 let state = require("./Utils");
 let Query = require("./Query");
 
-
-
-// four classes are in this file as they are all apart of a recursive/cyclical structures
 {
 
     //helper functions for determining if the input params are 
@@ -63,17 +60,12 @@ let Query = require("./Query");
             let ret = null;
             ret = Cache.FindOrQuery(null, table, "", checking).then(a => a != null);
             while (ret == null);
-            if (!ret) {
-                ////console.log("cannot find FK for ", collumn, " with value ", check, " on table ", table);
-            }
-
             return types[typeof (type)](...args)(check) && ret;
         }
     }
 
     function collumn(type, args = [], maintype = null, isPK = false, isFk = false, required = true) {
         this.dbtype = sql.VarChar(0)
-        // ////console.log(maintype ?? type.constructor.name);
 
         //major datatypes defined
         sqltype = maintype == null ? type.constructor.name : maintype
@@ -114,7 +106,6 @@ let Query = require("./Query");
             } else {
                 let DataType = maintype == null ? type.constructor.name : maintype
                 DataType = DataType.toLowerCase();
-                // console.log(DataType)
                 ret = ret && types[DataType](...args)(check)
             }
             if (isPK && mode == state.INSERT) {
@@ -184,15 +175,10 @@ class tableSchemas {
         try {
             return tableSchemas.tables[tablename]["PK"];
         } catch (ex) {
-            ////console.error(ex);
         }
     }
 
-    /**
-     * should not need to 
-     */
     validateAgainst(tablename, values, mode) {
-        ////console.log(this.constructor.name);
         if (tableSchemas.tables[tablename.toString()] == undefined) {
             console.log("invalid table passed")
             console.trace();
@@ -274,18 +260,15 @@ class Validate {
     //has corrent values
     //PK
     isValidQuery(table, mode, values, PK = null) {
-        // ////console.log(arguments);
         switch (mode) {
             case state.SELECT:
                 return schemas.validateAgainst(table, values)
                 break;
             case state.INSERT:
                 if (PK != null) {
-                    values[schem.GetPK(table)] = PK;
+                    values[tableSchemas.GetPK(table)] = PK;
                 } else if (values[tableSchemas.GetPK(table)] != undefined) {
                 } else {
-                    ////console.log("No pk passed for INSERT command")
-                    ////console.log(arguments);
                     return false;
                 }
                 return schemas.validateAgainst(table, values, state.INSERT)
@@ -295,7 +278,6 @@ class Validate {
                 break;
             case state.DELETE:
                 if (PK == null) {
-                    ////console.error("No pk passed for Delete command")
                     return false;
                 }
                 let obj = {};
@@ -303,7 +285,6 @@ class Validate {
                 return schemas.validateAgainst(table, obj)
                 break;
             default:
-                ////console.log("invalid state passed")
                 return false;
                 break;
         }
@@ -311,7 +292,6 @@ class Validate {
     }
 
     async GetAsJson(UID, Tablename, mode, checkingagainst = {}, PK = null) {
-        // ////console.log(arguments);
         let que;
         let ret;
         switch (mode) {
@@ -327,9 +307,7 @@ class Validate {
                 }
                 try {
                     ret = await que.GetResult();
-                    // ////console.log("json", ret)
                 } catch (ex) {
-                    ////console.error(ex);
                 }
                 break;
             case state.INSERT:
@@ -343,7 +321,6 @@ class Validate {
             case state.UPDATE:
                 //will need to always have the pk of an entry
                 que = new Query(UID, state.UPDATE, Tablename, schemas.GenerateColumnTypesTable(Tablename, checkingagainst), tableSchemas.GetPK(Tablename), PK)
-                ////console.log(que);
                 ret = await que.GetResult();
                 break;
             case state.DELETE:
@@ -351,15 +328,12 @@ class Validate {
                 let objs = {};
                 objs[pkname] = PK;
                 que = new Query(UID, state.DELETE, Tablename, schemas.GenerateColumnTypesTable(Tablename, objs), pkname, PK)
-                ////console.log(que);
                 ret = await que.GetResult();
-                break;
                 break;
             default:
                 return false;
                 break;
         }
-        // ////console.log(ret);
         return ret;
     }
 }
@@ -404,10 +378,7 @@ function Authenticate() {
         if (KEYSinvers[UID] != undefined) {
             await this.LogOut(KEYSinvers[UID]);//this needs to be done incase someone changes computers
         }
-        ////console.log(arguments);
         let check = await Cache.FindOrQuery(null, "Twang.Users", UID, { uname: Uname });
-
-        // ////console.log(check);
         if (check == undefined || check.length != 1) {
             return false;
         }
@@ -485,7 +456,6 @@ function Authenticate() {
         //if a perm is overriden 
         ret = ((ret[0].attribute.charCodeAt(0) >> operation) & 1) == 1;
 
-        ////console.log(ret);
         return ret;
     }
 }
@@ -510,9 +480,7 @@ class Cache {
             if (Cache.Data[Tablename] == undefined) {
                 return null;
             }
-            // ////console.log(arguments)
             if (pkvalue != "") {
-                // ////console.log(Cache.Data[Tablename][pkvalue]);
                 return [Cache.Data[Tablename][pkvalue]] == [] ? null : [Cache.Data[Tablename][pkvalue]]
             }
             let ret = [];
@@ -541,7 +509,6 @@ class Cache {
 
     //would make this #query but will generate errors in my current docker(cant find any other consistant images :( )
     static async Query(UID, Tablename, pkvalue = "", checkingagainst = {}) {
-        // ////console.log("args = " + JSON.stringify(arguments));
         if (validater.isValidQuery(Tablename, state.SELECT, checkingagainst, pkvalue)) {
             return validater.GetAsJson(UID, Tablename, state.SELECT, checkingagainst, pkvalue)
         } else {
@@ -556,12 +523,9 @@ class Cache {
                 throw new Error(401);
             }
         }
-        ////console.log(arguments, Tablename);
         let ret = this.Find(UID, Tablename, pkvalue, checkingagainst);
         if (ret == null) {
             ret = await this.Query(UID, Tablename, pkvalue, checkingagainst);
-            // ////console.log("query");
-            //////console.log(ret);
         }
         return ret;
     }
@@ -573,9 +537,7 @@ class Cache {
             }
         }
         if (validater.isValidQuery(Tablename, state.INSERT, collumns)) {
-            let ret = 0;
-            ret = await validater.GetAsJson(UID, Tablename, state.INSERT, collumns)
-            let add = await this.FindOrQuery(UID, Tablename, "", collumns);
+            let ret = await validater.GetAsJson(UID, Tablename, state.INSERT, collumns)
             return ret;
         } else {
             throw new Error(400);
@@ -615,7 +577,6 @@ class Cache {
         let ret = 0;
         if (validater.isValidQuery(Tablename, state.DELETE, {}, pkvalue)) {
             ret = await validater.GetAsJson(UID, Tablename, state.DELETE, {}, pkvalue);
-            ////console.log("del", ret);
             if (this.Data[Tablename] != undefined && this.Data[Tablename][pkvalue] != undefined) {
                 this.Data[Tablename][pkvalue] = undefined;
             }

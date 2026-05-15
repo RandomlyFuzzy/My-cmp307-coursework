@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "mssql": "^6.2.3"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2"
   }
 }

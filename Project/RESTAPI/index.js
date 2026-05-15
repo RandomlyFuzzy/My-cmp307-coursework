@@ -40,39 +40,8 @@ app.use(function (req, res, next) {
 });
 
 
-/*
-// qpredicate the router with a check and bail out when needed
-router.use(function (req, res, next) {
-    if (req.method != "GET") return next('router')
-    next()
-})
-// predicate the router with a check and bail out when needed
-router.use(function (req, res, next) {
-    if (!req.headers['x-auth']) return next('router')
-    next()
-})
-
-// use the router and 401 anything falling through
-app.use('/admin', router, function (req, res) {
-    res.sendStatus(401)
-})
-
-
-router.get('/user/:id', function (req, res) {
-    res.send('hello, user!')
-})
-
-*/
-
-
-// router.param('user_id', function (req, res, next, id) {
-//     res.send(id);
-//     console.log('CALLED ONLY ONCE')
-//     next()
-// })
-
 app.get("/test", (req, res) => {
-    res.sendFile(__dirname + "/html/testing.html");
+    res.sendStatus(200);
 })
 
 
@@ -154,53 +123,30 @@ app.route('/logout')
 
 
 
-let pre = function (req, res, next) {
-    console.log("request made from user", req.args[1]);
-    next();
-}
-
 let get = async function (req, res, next) {
-    // let val = await sqlinterface.GetResponse(null, null, null);
     req.args[3] = (req.query);
-    //console.log(req.args);
-    //console.log(req.query);
     let a;
     try {
         a = await Cache.FindOrQuery(...req.args);
     } catch (ex) {
-        //todo post error code + message
         console.error(ex)
         res.sendStatus(Number.parseInt(ex) != null ? Number.parseInt(ex) : 500);
     }
-    // console.log(a);
     res.send(a);
-
     next();
 }
 
 let post = async function (req, res, next) {
-    // // just an example of maybe updating the user
-    // req.user.name = req.params.name
-    // // save user ... etc
-    // req.res.data.push(req.user)
-    // res.send("no");
-
     req.args[3] = (req.body);
-
-
-    // console.log(req.args);
     let a;
     try {
         a = await Cache.Update(...req.args);
-        //console.log(a);
         if (a[0] == 1) {
             res.sendStatus(200);
-            // res.send(a);
         } else {
             res.sendStatus(404);
         }
     } catch (ex) {
-        //todo post error code + message
         console.error(ex)
         res.sendStatus(Number.parseInt(ex.message) != NaN ? Number.parseInt(ex.message) : 500);
     }
@@ -208,8 +154,6 @@ let post = async function (req, res, next) {
 }
 
 let put = async function (req, res, next) {
-    // console.log(req.query);
-    // console.log(req.body);
     req.args[2] = {}
     for (const key in req.query) {
         req.args[2][key] = req.query[key];
@@ -217,46 +161,35 @@ let put = async function (req, res, next) {
     for (const key in req.body) {
         req.args[2][key] = req.body[key];
     }
-    //console.log("put", req.args);
     let a;
     try {
         a = await Cache.Insert(...req.args);
-        // console.log("put", a);
         if (a[0] == 1) {
             res.sendStatus(200);
-            // res.send(a);
         } else {
             res.sendStatus(404);
         }
     } catch (ex) {
-        //todo post error code + message
         console.error(ex)
         await res.sendStatus(!isNaN(ex.message) ? Number.parseInt(ex.message) : 500);
     }
     next();
-    // next(new Error('not implemented'))
 }
 
 let del = async function (req, res, next) {
-    // res.send("yes");
-    //console.log(req.args);
     let a;
     try {
         a = await Cache.Delete(...req.args)
-        // console.log(a);
         if (a[0] == 1) {
             res.sendStatus(200);
-            // res.send(a);
         } else {
             res.sendStatus(404);
         }
     } catch (ex) {
-        //todo post error code + message
         console.error(ex)
         res.sendStatus(Number.parseInt(ex.message) != NaN ? Number.parseInt(ex.message) : 500);
     }
     next();
-    // next(new Error('not implemented'))
 }
 
 
@@ -305,41 +238,28 @@ app.param('pk', function (req, res, next, id) {
     next()
 })
 
-//im pritty sure I got the put and post the wrong way around but i got too deep into development to change it
-
 app.route('/DATA/:key/:table')
-    .all(pre)
     .get(get)
     .put(put)
-    .post((req, res, next) => {//can have 2 primary key present so this operation is invalid
+    .post((req, res, next) => {
         res.sendStatus(400)
-        // res.send("Invalid request made")
     })
-    .delete((req, res, next) => {//to make the operation as safe as possible
+    .delete((req, res, next) => {
         res.sendStatus(400)
-        // res.send("Invalid request made")
     })
 
 
 app.route('/DATA/:key/:table/:pk')
-    .all(pre)
     .get(get)
-    .put((req, res, next) => {//should only be 1 primary key present to make things consistant for this
+    .put((req, res, next) => {
         res.sendStatus(400)
-        // res.send("Invalid request made")
     })
     .post(post)
     .delete(del)
 
 
 
-// var options = {
-//     key: fs.readFileSync('./ssl/server.key'),
-//     cert: fs.readFileSync('./ssl/server.crt'),
-// };
-
 http.createServer(app).listen(settings.port)
-// https.createServer(options, app).listen(settings.port)
 async function removeMeetings() {
     //
 

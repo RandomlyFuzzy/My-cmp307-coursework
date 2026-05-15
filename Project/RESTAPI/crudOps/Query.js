@@ -1,15 +1,14 @@
 
-var interface = require("./interface");
+var sqlInterfaceModule = require("./interface");
 let Utils = require("./Utils")
 
 
 var sqlinterface;
 
-interface().then(async inter => (sqlinterface = (await inter)));//should fix
+sqlInterfaceModule().then(async inter => (sqlinterface = (await inter)));
 
 
 function Query(UID, state, tablename, value, pkn = null, pkval = null) {
-    // console.log("args = ", JSON.stringify(arguments));
     this.table = tablename;
     this.pkname = pkn || "";
     this.pkvalue = pkval || "";
@@ -27,15 +26,8 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
     this.operationstate = state;
     this.requestedUsers = UID;
 
-    /**
-     * This has got to be redone to use prepared statments
-     */
-    /**
-     * function to generate a query from the certain varables the object was contructed with
-     */
     this.GetResult = () => {
         let query = "";
-        // console.log(this);
         switch (this.operationstate) {
             case Utils.SELECT:
                 query = `SELECT * from ${this.table}`
@@ -66,11 +58,10 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
                         query = query.substr(0, query.length - 7);
                     }
                 }
-                // console.log("query", query, this.values);
 
 
                 if (sqlinterface == null) {
-                    return interface()
+                    return sqlInterfaceModule()
                         .then(async inter => (sqlinterface = (await inter)))
                         .then(async inter => await inter.GetResponse(this.requestedUsers, null, query, this.values));
                 } else {
@@ -80,7 +71,6 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
             case Utils.INSERT:
                 query = `INSERT into ${this.table} (`
                 query2 = ` values (`
-                // console.log(this.values);
                 let added = false;
                 for (const key in this.values) {
                     if (Utils.isDefault(this.values[key].value)) {
@@ -106,9 +96,7 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
                 }
                 break;
             case Utils.UPDATE:
-                //UPDATE table_name SET column1 = value1, column2 = value2 WHERE pk = pkval;
                 query = `UPDATE ${this.table} SET `
-                //key = val
                 for (const key in this.values) {
                     query += `${key} = @${key} ,`
                 }
@@ -118,7 +106,6 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
                 this.values["PK"].value = this.pkvalue;
                 break;
             case Utils.DELETE:
-                //DELETE FROM table_name WHERE pk = pkval;
                 query = `DELETE FROM ${this.table} WHERE ${this.pkname} = @${this.pkname} `
                 this.values["PK"] = this.values[this.pkname];
                 this.values["PK"].value = this.pkvalue;
@@ -133,7 +120,7 @@ function Query(UID, state, tablename, value, pkn = null, pkval = null) {
             }
         }
         if (sqlinterface == null) {
-            return interface()
+            return sqlInterfaceModule()
                 .then(async inter => (sqlinterface = (await inter)))
                 .then(async inter => await inter.GetResponseNoneQuery(this.requestedUsers, null, query, this.values));
         } else {
